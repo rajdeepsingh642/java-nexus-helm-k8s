@@ -13,7 +13,7 @@ pipeline{
             
             steps{
                 
-               git branch: 'main', url: 'https://github.com/rajdeepsingh642/spingboot-app.git'
+               git branch: 'main', url: 'https://github.com/rajdeepsingh642/java-test.git'
                     
                     
                 }
