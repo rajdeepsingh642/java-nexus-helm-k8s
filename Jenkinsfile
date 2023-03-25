@@ -42,7 +42,20 @@ pipeline{
         
          
            
-          
+           stage('check datree'){
+          steps{
+            script{
+              
+                    dir(' helm/singh') {
+                      withEnv(['DATREE_TOKEN=aa97d52e-a99b-4982-bcf4-e672a8b95db6']) {
+                   sh 'helm datree test .' 
+              }
+                 }
+
+            }
+          }
+          }
+
         stage('pushin helm chart to nexus'){
            steps{
                script{
@@ -59,8 +72,23 @@ pipeline{
                   } 
                }
            }
+        
         }
+
+       stage('deploye to k8s'){
+          steps{
+            script{
+                sshagent(['k8s']) {
+                     dir(' helm/') {
+                        'sh helm upgrade --install --set image.repository="192.168.1.226:8083/springboot" --set image.tag="$BUILD_ID" myjavaaap singh/'
+                     
+}
+            }
+          }
+       } 
     }
 
 
+    }
 }  
+
