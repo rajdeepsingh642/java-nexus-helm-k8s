@@ -13,7 +13,7 @@ pipeline{
             
             steps{
                 
-               git branch: 'main', url: 'https://github.com/rajdeepsingh642/java-test.git'
+               git branch: 'master', url: 'https://github.com/rajdeepsingh642/java-test.git'
                     
                     
                 }
