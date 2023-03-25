@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class DevopsIntegrationApplication {
 
 	@GetMapping
-	public String message(){
-		return "welcome to Mr. DevOps Youtube Channel";
+	public String welcome(){
+		return "welcome to rajdeep singh";
 	}
 
 	public static void main(String[] args) {
