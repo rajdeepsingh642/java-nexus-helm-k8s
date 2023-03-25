@@ -13,7 +13,7 @@ pipeline{
             
             steps{
                 
-               git branch: 'main', url: 'https://github.com/rajdeepsingh642/java-test.git'
+               git branch: 'rajdeep', url: 'https://github.com/rajdeepsingh642/java-test.git'
                     
                     
                 }
@@ -46,9 +46,9 @@ pipeline{
           steps{
             script{
               
-                    dir(' helm/') {
+                    dir(' helm/singh') {
                       withEnv(['DATREE_TOKEN=aa97d52e-a99b-4982-bcf4-e672a8b95db6']) {
-                   sh 'helm datree test singh/.' 
+                   sh 'helm datree test .' 
               }
                  }
 
