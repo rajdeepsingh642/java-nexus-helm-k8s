@@ -63,11 +63,11 @@ pipeline{
        stage('deploye to k8s'){
           steps{
             script{
-                sshagent(['k8s']) {
+               
                      dir(' helm/') {
                         'sh helm upgrade --install --set image.repository="192.168.1.226:8083/springboot" --set image.tag="$BUILD_ID" myjavaaap singh/'
                      
-}
+
             }
           }
        } 
