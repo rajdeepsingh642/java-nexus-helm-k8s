@@ -19,7 +19,17 @@ pipeline{
                 }
             }
         
-        
+         stage('sonar scaner'){
+            steps{
+                script{
+                withSonarQubeEnv(credentialsId: 'sonar_qube'){
+
+ 
+                     sh "mvn clean install sonar:sonar"
+                }
+                }
+            }
+         }
 
          stage('build image'){
             steps{
@@ -73,7 +83,18 @@ pipeline{
                }
            }
         }
+      stage('deploye to k8s'){
+          steps{
+            script{
+               
+                     dir(' helm/') {
+                        'sh helm upgrade --install --set image.repository="192.168.1.226:8083/springboot" --set image.tag="$BUILD_ID" myjavaaap singh/'
+                     
+
+            }
+          }
+       } 
     }
 
-
+    }
 }  
